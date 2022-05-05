@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace DInventory.Domains.Entities
 {
+    [Table("Products")]
     public class Product
     {
         [Key]

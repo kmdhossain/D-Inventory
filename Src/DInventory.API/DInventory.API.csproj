@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DomainCore\DInventory.Domains\DInventory.Domains.csproj" />
+    <ProjectReference Include="..\Infrastructure\DInventory.DataServices.EFCore\DInventory.DataServices.EFCore.csproj" />
+  </ItemGroup>
+
 </Project>
