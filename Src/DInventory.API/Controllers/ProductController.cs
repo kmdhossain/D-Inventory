@@ -12,7 +12,17 @@ namespace DInventory.API.Controllers
         public IEnumerable<Product> Get()
         {
             var db = new InMemoryDbContext();
-            //Populate data in memory db
+            
+            var testProducts = new List<Product>();
+
+            for (int i = 0; i < 10; i++)
+                testProducts.Add(
+                    new Product {  ProductId = i + 1, ProductName = "Product:" + i}
+                    );
+
+            db.Products.AddRange(testProducts);
+            db.SaveChanges();
+
             return new ProductDataService(db).GetAllProducts();
         }
     }
