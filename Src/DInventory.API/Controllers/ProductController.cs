@@ -11,7 +11,9 @@ namespace DInventory.API.Controllers
         [HttpGet()]
         public IEnumerable<Product> Get()
         {
-            return new ProductDataService().GetAllProducts();
+            var db = new InMemoryDbContext();
+            //Populate data in memory db
+            return new ProductDataService(db).GetAllProducts();
         }
     }
 }

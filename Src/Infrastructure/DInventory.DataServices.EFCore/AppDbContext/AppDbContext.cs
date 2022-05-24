@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace DInventory.DataServices.EFCore.AppDbContext
 {
-    public class AppDbContext : DbContext
+    public class AppDatabaseContext : DbContext
     {
-        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        public AppDatabaseContext(DbContextOptions<AppDatabaseContext> options) : base(options)
         {
         }
 
