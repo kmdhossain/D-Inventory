@@ -1,19 +1,23 @@
 ﻿using DInventory.DataServices.Interface;
 using DInventory.Domains.Entities;
+using Microsoft.EntityFrameworkCore;
+using DInventory.DataServices.EFCore.AppDbContext;
 
 namespace DInventory.DataServices.EFCore
 {
-    public class ProductDataService : IProductDataService
+    public class ProductDataService: IProductDataService
     {
-        public IList<Product> GetAllProducts() => new List<Product>
-                {
-                    new Product
-                    {
-                        ProductName = "Cokacola",
-                        ProductId = 1,
-                        UnitPrice = 1.00f,
-                        UnitCost = 0.9f
-                    }
-            };
+        protected readonly AppDatabaseContext DbContext;
+
+        public ProductDataService(AppDatabaseContext dbContext)
+        {
+            DbContext = dbContext;
+        }
+
+        public IList<Product> GetAllProducts()
+        {
+            return DbContext.Products.ToList();
+        }
+
     }
 }
