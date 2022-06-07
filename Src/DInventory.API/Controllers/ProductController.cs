@@ -1,6 +1,8 @@
 using DInventory.DataServices.EFCore;
+using DInventory.DataServices.EFCore.AppDbContext;
 using DInventory.Domains.Entities;
 using Microsoft.AspNetCore.Mvc;
+using System.Data.Entity;
 
 namespace DInventory.API.Controllers
 {
@@ -11,7 +13,7 @@ namespace DInventory.API.Controllers
         [HttpGet()]
         public IEnumerable<Product> Get()
         {
-            var db = new InMemoryDbContext();
+            AppDatabaseContext db = new InMemoryDbContext();
             
             var testProducts = new List<Product>();
 
@@ -24,6 +26,17 @@ namespace DInventory.API.Controllers
             db.SaveChanges();
 
             return new ProductDataService(db).GetAllProducts();
+
         }
+        //public virtual async Task<TList> Add(List list)
+        //{
+        //    var obj = DbContext.Add(list);
+
+        //    await DbContext.SaveChangesAsync();
+
+        //    return obj.Entity;
+        //}
+
+
     }
 }
